@@ -1,7 +1,13 @@
 .header {
-  margin-top: 0.5em;
-  margin-left: 1.0em;
+  position: sticky;
+  top: 0;
   display: flex;
+  justify-content: space-evenly;
+  border-bottom: 0.1px solid lightgray;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 100%;
+  z-index: 999;
 }
 
 .header__left {
@@ -11,10 +17,11 @@
 .header__left > img {
   object-fit: contain;
   height: 40px;
+  margin-right: 10px;
 }
 
 .header__search {
-  margin-left: 0.5em;
+  margin-left: 0.2em;
   padding: 10px;
   display: flex;
   align-items: center;
@@ -28,4 +35,8 @@
   outline: none;
   border: none;
   background: none;
+}
+
+.header__right {
+  display: flex;
 }
