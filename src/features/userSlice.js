@@ -22,7 +22,9 @@ export const incrementAsync = createAsyncThunk(
 
 export const userSlice = createSlice({
   name: 'counter',
-  initialState,
+  initialState: {
+    user: null,
+  },
   // The `reducers` field lets us define reducers and generate associated actions
   reducers: {
     increment: (state) => {
