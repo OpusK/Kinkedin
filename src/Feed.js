@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux';
 import InputOption from "./InputOption"
 import Post from "./Post"
 
@@ -11,8 +12,11 @@ import CalendarViewDayIcon from '@mui/icons-material/CalendarViewDay';
 
 import { query, collection, addDoc, onSnapshot, serverTimestamp, orderBy } from "firebase/firestore";
 import { db } from "./firebase";
+import { selectUser } from './features/userSlice';
 
 function Feed() {
+  const user = useSelector(selectUser);
+
   const [refresh, setRefresh] = useState(false);
   const [input, setInput] = useState("");
   const [posts, setPosts] = useState([]);
@@ -23,7 +27,8 @@ function Feed() {
       const db_posts = query(collection(db, 'posts'), orderBy('timestamp', 'desc'));
       onSnapshot(db_posts, (snapshot) => {
         setPosts(snapshot.docs.map((doc) => ({
-          id: doc.id, data: doc.data()
+          id: doc.id, 
+          data: doc.data()
         })));
       });
     } catch (e) {
@@ -37,10 +42,10 @@ function Feed() {
     try {
       // https://firebase.google.com/docs/firestore/quickstart#add_data
       addDoc(collection(db, "posts"), {
-        name: "Kei",
-        description: "I'm a software engineer",
+        name: user.displayName,
+        description: user.email,
         message: input,
-        photoUrl: "",
+        photoUrl: user.photoUrl || "",
         timestamp: serverTimestamp(),
       });
       console.log("Sent post: " + input);
@@ -70,7 +75,7 @@ function Feed() {
         </div>
       </div>
 
-      {posts.length && posts.map(({ id, data: { name, description, message, photoUrl } }) => (
+      {posts.map(({ id, data: { name, description, message, photoUrl } }) => (
         <Post
           key={id}
           name={name}
