@@ -1,7 +1,6 @@
 // https://firebase.google.com/docs/firestore/quickstart#initialize
 import { initializeApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
-import { getAuth } from "firebase/auth"
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -14,6 +13,5 @@ const firebaseConfig = {
 
 const firebaseApp = initializeApp(firebaseConfig)
 const db = getFirestore(firebaseApp);
-const auth = getAuth();
 
-export { db, auth };
+export { db };
