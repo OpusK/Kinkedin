@@ -1,4 +1,5 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import './Header.css';
 import HeaderNavBar from './HeaderNavBar.js'
 
@@ -9,9 +10,19 @@ import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
 import ChatIcon from '@mui/icons-material/Chat';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 
+import { logout } from "./features/userSlice";
+import { getAuth, signOut } from "firebase/auth";
 
 
 function Header() {
+  const dispatch = useDispatch();
+
+  const logoutOfApp = () => {
+    dispatch(logout());
+    // https://firebase.google.com/docs/auth/web/password-auth#next_steps
+    signOut(getAuth());
+  };
+
   return (
     <div className="header">
       <div className="header__left">
@@ -19,7 +30,7 @@ function Header() {
 
         <div className="header__search">
           <SearchIcon />
-          <input type="text" />
+          <input placeholder="Search" type="text" />
         </div>
       </div>
 
@@ -29,7 +40,11 @@ function Header() {
         <HeaderNavBar Icon={BusinessCenterIcon} title='Jobs' />
         <HeaderNavBar Icon={ChatIcon} title='Messaging' />
         <HeaderNavBar Icon={NotificationsIcon} title='Notification' />
-        <HeaderNavBar avatar="https://avatars.githubusercontent.com/u/18085958?s=400&u=5ed6e2c60cb0e4fc413b801abf470ef40fde02fe&v=4" title='me' />
+        <HeaderNavBar 
+          avatar={true}
+          title='me'
+          onClick={logoutOfApp}
+        />
       </div>
     </div>
   );
