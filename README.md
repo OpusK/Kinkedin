@@ -12,6 +12,11 @@ yarn install
 yarn add @mui/material @emotion/react @emotion/styled
 ```
 
+#### install [react-flip-move](https://www.npmjs.com/package/react-flip-move?activeTab=readme)
+```bash
+yarn add react-flip-move
+```
+
 ## Run
 ```bash
 yarn run start
