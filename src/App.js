@@ -6,6 +6,7 @@ import Header from './Header';
 import Login from './Login';
 import Sidebar from './Sidebar';
 import Feed from './Feed';
+import Widgets from './Widgets';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 
@@ -41,7 +42,7 @@ function App() {
         <div className="app__body">
           <Sidebar />
           <Feed />
-          {/* Widgets */}
+          <Widgets />
         </div>
       )}
     </div>
