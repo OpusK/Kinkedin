@@ -22,6 +22,34 @@ yarn add react-flip-move
 yarn run start
 ```
 
+## For deploying using Firebase
+- Firebase CLI login
+```bash
+firebase login
+```
+- Initialize firebase
+```
+firebase init
+```
+- Choose yours
+```
+? Are you ready to proceed? Yes
+? Which Firebase features do you want to set up for this directory? Press Space to select features, then Enter to confirm your choices. Hosting: Configure files for Firebase Hosting and (optionally) set up GitHub Action deploys
+? Please select an option: Use an existing project
+? Select a default Firebase project for this directory: kinkedin-44 (kinkedin)
+? What do you want to use as your public directory? build
+? Configure as a single-page app (rewrite all urls to /index.html)? Yes
+? Set up automatic builds and deploys with GitHub? No
+```
+- build
+```
+npm run build    # optimize production build
+```
+- deploy
+```bash
+firebase deploy
+```
+
 ---
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
